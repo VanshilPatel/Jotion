@@ -1,0 +1,14 @@
+action_id: trunk-upgrade-available
+date: 2024-01-27 06:02:43
+run: trunk upgrade --notify --allow-daemon-start=false
+run_from: ""
+trigger: schedule 1h
+result:
+  exit_code: 2
+  out: "\x1b[1m\x1b[31m✖ Filesystem error: in current_path: call to getcwd failed: operation not permitted\x1b[0m\n"
+  err: "shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted\n"
+timestamp: 1706335363
+full_timestamp:
+  nanos: 26979000
+  seconds: 1706335363
+trunk_version: 1.19.0

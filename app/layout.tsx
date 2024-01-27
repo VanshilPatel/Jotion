@@ -1,3 +1,4 @@
+import { ConvexClientProvider } from "@/components/ui/providers/convex-provider";
 import { ThemeProvider } from "@/components/ui/providers/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+        <ConvexClientProvider>
         <ThemeProvider
         attribute="class"
         defaultTheme = "system"
@@ -42,6 +44,7 @@ export default function RootLayout({
         storageKey = "jotion-theme-2">
         {children}
         </ThemeProvider>
+        </ConvexClientProvider>
         </body>
     </html>
   );
