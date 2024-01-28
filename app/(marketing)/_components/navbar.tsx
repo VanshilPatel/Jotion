@@ -1,12 +1,14 @@
 "use client"
 import { useConvexAuth } from 'convex/react';
-import {SignInButton} from "@clerk/clerk-react"
+import {SignInButton, UserButton} from "@clerk/clerk-react"
 
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import useScrollTop from "@/hooks/use-scroll-top";
 import { cn } from "@/lib/utils";
 import Logo from "./logo";
 import { Button } from '@/components/ui/button';
+import { Spinner } from '@/components/ui/spinner';
+import Link from '@/node_modules/next/link';
 
 const Navbar = () => {
     const {isAuthenticated, isLoading} = useConvexAuth()
@@ -18,9 +20,9 @@ const Navbar = () => {
 
             <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-x-2">
                 {isLoading && (
-                    <p>Loading...</p>
+                  <Spinner/>
                 )}
-                {!isAuthenticated && !isAuthenticated && (
+                {!isAuthenticated && !isLoading && (
                     <>
                     <SignInButton mode="modal">
                         <Button variant="ghost" size="sm">
@@ -33,6 +35,18 @@ const Navbar = () => {
                             Get Jotion free
                         </Button>
                     </SignInButton>
+                    </>
+                )}
+                { isAuthenticated && !isLoading && (
+                    <>
+                    <Button variant="ghost" size="sm" asChild>
+                        <Link href="/documents">
+                        Enter Jotion</Link>
+                    </Button>
+                    <UserButton
+                     afterSignOutUrl="/"/>
+
+                   
                     </>
                 )}
               <ModeToggle/>
