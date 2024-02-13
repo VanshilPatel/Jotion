@@ -1,0 +1,14 @@
+action_id: trunk-single-player-auto-upgrade
+date: 2024-02-09 10:56:28
+run: trunk upgrade cli --single-player-only -n --no-progress --on-upgrade=false --allow-daemon-start=false
+run_from: ""
+trigger: schedule 24h+1h
+result:
+  exit_code: 2
+  out: "\x1b[1m\x1b[31m✖ Filesystem error: in current_path: call to getcwd failed: operation not permitted\x1b[0m\n"
+  err: "shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted\n"
+timestamp: 1707476188
+full_timestamp:
+  nanos: 365995000
+  seconds: 1707476188
+trunk_version: 1.19.0
